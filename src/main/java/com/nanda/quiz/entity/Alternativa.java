@@ -1,17 +1,40 @@
 package com.nanda.quiz.entity;
 
-public class Alternativa {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.nanda.quiz.dto.PerguntaDTO;
+
+@Entity
+@Table(name = "tb_alternativa")
+public class Alternativa implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
-	private int id;
-	private int slot;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private Integer slot;
 	private String descricao;
-	private Pergunta pergunta;
-	private Gabarito gabarito;
+	private Integer gabarito;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_pergunta")
+	private PerguntaDTO pergunta;
 	
 	public Alternativa() {
 	}
 
-	public Alternativa(int id, int slot, String descricao, Pergunta pergunta, Gabarito gabarito) {
+	
+
+	public Alternativa(Integer id, Integer slot, String descricao, PerguntaDTO pergunta, Integer gabarito) {
+		super();
 		this.id = id;
 		this.slot = slot;
 		this.descricao = descricao;
@@ -19,19 +42,21 @@ public class Alternativa {
 		this.gabarito = gabarito;
 	}
 
-	public int getId() {
+
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getSlot() {
+	public Integer getSlot() {
 		return slot;
 	}
 
-	public void setSlot(int slot) {
+	public void setSlot(Integer slot) {
 		this.slot = slot;
 	}
 
@@ -43,26 +68,26 @@ public class Alternativa {
 		this.descricao = descricao;
 	}
 
-	public Pergunta getPergunta() {
+	public PerguntaDTO getPergunta() {
 		return pergunta;
 	}
 
-	public void setPergunta(Pergunta pergunta) {
+	public void setPergunta(PerguntaDTO pergunta) {
 		this.pergunta = pergunta;
 	}
 
-	public Gabarito getGabarito() {
+	public Integer getGabarito() {
 		return gabarito;
 	}
 
-	public void setGabarito(Gabarito gabarito) {
+	public void setGabarito(Integer gabarito) {
 		this.gabarito = gabarito;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final Integer prime = 31;
+		Integer result = 1;
 		result = prime * result + id;
 		result = prime * result + slot;
 		return result;
