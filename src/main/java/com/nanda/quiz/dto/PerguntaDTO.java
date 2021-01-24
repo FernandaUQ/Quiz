@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.nanda.quiz.entity.Pergunta;
-import com.nanda.quiz.entity.Quiz;
 
 public class PerguntaDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -15,12 +14,12 @@ public class PerguntaDTO implements Serializable{
 	private Integer slot;
 	private String corpo;
 	private List<AlternativaDTO> alternativas = new ArrayList<>();
-	private Quiz quiz;
+	private QuizDTO quiz;
 	
 	public PerguntaDTO() {
 	}
 
-	public PerguntaDTO(Integer id, Integer slot, String corpo, List<AlternativaDTO> alternativas, Quiz quiz) {
+	public PerguntaDTO(Integer id, Integer slot, String corpo, List<AlternativaDTO> alternativas, QuizDTO quiz) {
 		super();
 		this.id = id;
 		this.slot = slot;
@@ -35,7 +34,7 @@ public class PerguntaDTO implements Serializable{
 		slot = en.getSlot();
 		corpo = en.getCorpo();
 		alternativas = en.getAlternativas().stream().map(x -> new AlternativaDTO(x)).collect(Collectors.toList());
-		quiz = quiz;
+		quiz = new QuizDTO(en.getQuiz());
 	}
 
 	public Integer getId() {
@@ -70,14 +69,10 @@ public class PerguntaDTO implements Serializable{
 		this.alternativas = alternativas;
 	}
 
-	public Quiz getQuiz() {
+	public QuizDTO getQuiz() {
 		return quiz;
 	}
 
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
-	}
-	
 	
 	
 	
