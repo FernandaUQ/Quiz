@@ -13,33 +13,29 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_quiz")
-public class Quiz implements Serializable{
+public class Quiz implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String titulo;
-	
-	@OneToMany (mappedBy = "quiz", targetEntity = Pergunta.class, cascade = CascadeType.ALL)
+	private String imgUrl;
+
+	@OneToMany(mappedBy = "quiz", targetEntity = Pergunta.class)
 	private List<Pergunta> perguntas;
-	
-	@OneToMany(mappedBy = "quiz", targetEntity = Resultado.class, cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "quiz", targetEntity = Resultado.class)
 	private List<Resultado> resultado;
-	
-	
 
 	public Quiz() {
 	}
-	
-	
 
-	public Quiz(Integer id, String titulo, List<Pergunta> perguntas, List<Resultado> resultado) {
+	public Quiz(Integer id, String titulo, String imgUrl) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.perguntas = perguntas;
-		this.resultado = resultado;
+		this.imgUrl = imgUrl;
 	}
 
 	public Integer getId() {
@@ -66,6 +62,14 @@ public class Quiz implements Serializable{
 		return resultado;
 	}
 
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,8 +77,6 @@ public class Quiz implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -92,6 +94,5 @@ public class Quiz implements Serializable{
 			return false;
 		return true;
 	}
-
 
 }

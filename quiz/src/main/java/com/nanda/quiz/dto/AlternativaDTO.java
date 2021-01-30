@@ -2,38 +2,39 @@ package com.nanda.quiz.dto;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nanda.quiz.entity.Alternativa;
 
 public class AlternativaDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	
 	private Integer id;
-	private Integer slot;
 	private String descricao;
-	private Integer gabarito;
+	private Integer pontuacao;
+	
+	@JsonIgnore
 	private PerguntaDTO pergunta;
 	
 	public AlternativaDTO() {
 		}
 	
 	
-	public AlternativaDTO(Integer id, Integer slot, String descricao, Integer gabarito, PerguntaDTO pergunta) {
+	public AlternativaDTO(Integer id, String descricao, Integer pontuacao) {
 		super();
 		this.id = id;
-		this.slot = slot;
 		this.descricao = descricao;
-		this.gabarito = gabarito;
-		this.pergunta = pergunta;
-	}
+		this.pontuacao = pontuacao;
+		}
 
 	public AlternativaDTO(Alternativa entity) {
 		super();
 		id = entity.getId();
-		slot = entity.getSlot();
 		descricao = entity.getDescricao();
-		gabarito = entity.getGabarito();
-		pergunta = new PerguntaDTO(entity.getPergunta());
-	}
+		pontuacao = entity.getPontuacao();
+		}
 
 
 	public Integer getId() {
@@ -45,17 +46,6 @@ public class AlternativaDTO implements Serializable{
 		this.id = id;
 	}
 
-
-	public Integer getSlot() {
-		return slot;
-	}
-
-
-	public void setSlot(Integer slot) {
-		this.slot = slot;
-	}
-
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -66,27 +56,20 @@ public class AlternativaDTO implements Serializable{
 	}
 
 
-	public Integer getGabarito() {
-		return gabarito;
+	public Integer getPontuacao() {
+		return pontuacao;
 	}
 
 
-	public void setGabarito(Integer gabarito) {
-		this.gabarito = gabarito;
+	public void setPontuacao(Integer pontuacao) {
+		this.pontuacao = pontuacao;
 	}
 
-
+	@Transient
 	public PerguntaDTO getPergunta() {
 		return pergunta;
 	}
 
-
-	public void setPergunta(PerguntaDTO pergunta) {
-		this.pergunta = pergunta;
-	}
-	
-	
-	
 	
 	
 }

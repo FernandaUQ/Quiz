@@ -3,8 +3,8 @@ package com.nanda.quiz.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "tb_pergunta")
@@ -21,22 +23,22 @@ public class Pergunta implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer slot;
 	private String corpo;
 	
 	@OneToMany(mappedBy = "pergunta",
-			targetEntity = Alternativa.class,
-			cascade = CascadeType.ALL)
+			targetEntity = Alternativa.class)
 	private List<Alternativa> alternativas;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_quiz")
 	private Quiz quiz;
+	
+	public Pergunta() {
+	}
 
-	public Pergunta(Integer id, Integer slot, String corpo) {
+	public Pergunta(Integer id, String corpo) {
 		super();
 		this.id = id;
-		this.slot = slot;
 		this.corpo = corpo;
 	}
 
@@ -46,14 +48,6 @@ public class Pergunta implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getSlot() {
-		return slot;
-	}
-
-	public void setSlot(Integer slot) {
-		this.slot = slot;
 	}
 
 	public String getCorpo() {
@@ -68,7 +62,7 @@ public class Pergunta implements Serializable{
 		return alternativas;
 	}
 	
-
+	
 	public Quiz getQuiz() {
 		return quiz;
 	}
@@ -79,7 +73,6 @@ public class Pergunta implements Serializable{
 		final Integer prime = 31;
 		Integer result = 1;
 		result = prime * result + id;
-		result = prime * result + slot;
 		return result;
 	}
 
@@ -94,14 +87,12 @@ public class Pergunta implements Serializable{
 		Pergunta other = (Pergunta) obj;
 		if (id != other.id)
 			return false;
-		if (slot != other.slot)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Pergunta [id=" + id + ", slot=" + slot + ", corpo=" + corpo + ", alternativas=" + alternativas + "]";
+		return "Pergunta [id=" + id + ", corpo=" + corpo + ", alternativas=" + alternativas + "]";
 	}
 
 }

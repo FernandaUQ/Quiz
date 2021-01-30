@@ -2,6 +2,7 @@ package com.nanda.quiz.dto;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nanda.quiz.entity.Resultado;
 
 public class ResultadoDTO implements Serializable{
@@ -10,6 +11,10 @@ public class ResultadoDTO implements Serializable{
 	private Integer id;
 	private String personagem;
 	private String imgUrl;
+	private Integer notaMin;
+	private Integer notaMax;
+	
+	@JsonIgnore
 	private QuizDTO quiz;
 	
 	
@@ -17,10 +22,12 @@ public class ResultadoDTO implements Serializable{
 	}
 
 
-	public ResultadoDTO(Integer id, String personagem, String imgUrl) {
+	public ResultadoDTO(Integer id, String personagem, String imgUrl, Integer NotaMin, Integer NotaMax) {
 		this.id = id;
 		this.personagem = personagem;
 		this.imgUrl = imgUrl;
+		this.notaMin = NotaMin;
+		this.notaMax = NotaMax;
 	}
 	
 	
@@ -29,7 +36,8 @@ public class ResultadoDTO implements Serializable{
 		id = en.getId();
 		personagem = en.getPersonagem();
 		imgUrl = en.getImgUrl();
-		quiz = new QuizDTO(en.getQuiz());
+		notaMin = en.getNotaMin();
+		notaMax = en.getNotaMax();	
 	}
 
 
@@ -61,8 +69,25 @@ public class ResultadoDTO implements Serializable{
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	
-	
+
+	public Integer getNotaMin() {
+		return notaMin;
+	}
+
+
+	public void setNotaMin(Integer notaMin) {
+		this.notaMin = notaMin;
+	}
+
+
+	public Integer getNotaMax() {
+		return notaMax;
+	}
+
+
+	public void setNotaMax(Integer notaMax) {
+		this.notaMax = notaMax;
+	}
 
 
 	public QuizDTO getQuiz() {

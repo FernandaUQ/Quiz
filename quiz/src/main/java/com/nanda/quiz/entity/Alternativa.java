@@ -3,14 +3,14 @@ package com.nanda.quiz.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.nanda.quiz.dto.PerguntaDTO;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tb_alternativa")
@@ -20,11 +20,11 @@ public class Alternativa implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer slot;
 	private String descricao;
-	private Integer gabarito;
+	private Integer pontuacao;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_pergunta")
 	private Pergunta pergunta;
 	
@@ -33,13 +33,11 @@ public class Alternativa implements Serializable{
 
 	
 
-	public Alternativa(Integer id, Integer slot, String descricao, Pergunta pergunta, Integer gabarito) {
+	public Alternativa(Integer id, String descricao, Integer pontuacao) {
 		super();
 		this.id = id;
-		this.slot = slot;
 		this.descricao = descricao;
-		this.pergunta = pergunta;
-		this.gabarito = gabarito;
+		this.pontuacao = pontuacao;
 	}
 
 
@@ -52,14 +50,6 @@ public class Alternativa implements Serializable{
 		this.id = id;
 	}
 
-	public Integer getSlot() {
-		return slot;
-	}
-
-	public void setSlot(Integer slot) {
-		this.slot = slot;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -68,28 +58,25 @@ public class Alternativa implements Serializable{
 		this.descricao = descricao;
 	}
 
+	public Integer getPontuacao() {
+		return pontuacao;
+	}
+
+	public void setPontuacao(Integer pontuacao) {
+		this.pontuacao = pontuacao;
+	}
+	
 	public Pergunta getPergunta() {
 		return pergunta;
 	}
 
-	public void setPergunta(Pergunta pergunta) {
-		this.pergunta = pergunta;
-	}
 
-	public Integer getGabarito() {
-		return gabarito;
-	}
-
-	public void setGabarito(Integer gabarito) {
-		this.gabarito = gabarito;
-	}
-
+	
 	@Override
 	public int hashCode() {
-		final Integer prime = 31;
-		Integer result = 1;
-		result = prime * result + id;
-		result = prime * result + slot;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -102,17 +89,18 @@ public class Alternativa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Alternativa other = (Alternativa) obj;
-		if (id != other.id)
-			return false;
-		if (slot != other.slot)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Alternativa [id=" + id + ", slot=" + slot + ", descricao=" + descricao + ", pergunta=" + pergunta
-				+ ", gabarito=" + gabarito + "]";
+		return "Alternativa [id=" + id + ", descricao=" + descricao
+				+ ", pontuacao=" + pontuacao + "]";
 	}
 
 	
