@@ -1,0 +1,5 @@
+package com.nanda.quiz.config;
+
+public class SecurityConfig {
+
+}

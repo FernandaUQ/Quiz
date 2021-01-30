@@ -1,0 +1,5 @@
+package com.nanda.quiz.entity;
+
+public class Resultado {
+
+}

@@ -1,0 +1,7 @@
+server.port 8082
+
+spring.profiles.active=test
+
+spring.jpa.open-in-view=false
+
+spring.neo4j.security.hostname-verification-enabled= false
