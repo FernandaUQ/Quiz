@@ -1,21 +1,23 @@
 import {useLocation} from "react-router-dom";
 import {Quiz} from "../Quizes/types";
+import QuizPage from "./QuizPage";
+import {useEffect, useState} from "react";
 
 function QuizView() {
-  let quiz = useLocation().state as Quiz
+
+  const [quiz, setQuiz] = useState<Quiz>();
+  let location = useLocation();
+  useEffect(() => {
+    setQuiz(location.state as Quiz)
+  },[location.state])
+
   if (!quiz) return (
       <h1>This quiz doesn't exist</h1>
   )
-  console.log(quiz)
   return (
-      <>
-        <div>
-          <img src={quiz.imgUrl} alt={quiz.titulo}/>
-          <h2>{quiz.titulo}</h2>
-          <div>
-          </div>
-        </div>
-      </>
+      <div className="quiz-detail-container">
+        <QuizPage quiz={quiz}/>
+      </div>
   )
 }
 

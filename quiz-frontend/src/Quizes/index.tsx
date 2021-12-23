@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { fetchQuiz } from "../api";
 import QuizList from "./QuizList";
 
-
 import { Quiz } from "./types";
 
 function QuizListView(){

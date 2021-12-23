@@ -4,14 +4,13 @@ export type Quiz = {
     id: number;
     titulo: string;
     imgUrl: string;
-    perguntas: [];
-    resultados: [];
+    perguntas: Pergunta[];
 }
 
 export type Pergunta = {
     id: number;
     corpo: string;
-    alternativas: [];
+    alternativas: Alternativa[];
 }
 
 export type Alternativa = {

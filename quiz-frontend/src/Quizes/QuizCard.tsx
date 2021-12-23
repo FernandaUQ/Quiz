@@ -10,8 +10,9 @@ type Props = {
 function QuizCard({quiz}: Props) {
   const quizTo =  {
     pathname: `/quiz/${quiz.id}`,
-    state: {quiz: quiz}
+    state: quiz
   };
+  console.log(quiz)
   return (
       <div>
         <Link to={quizTo}>

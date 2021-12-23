@@ -1,0 +1,36 @@
+.quiz-detail-container {
+    padding: 1% 20% 1% 20%;
+}
+.quiz-detail-container h1 {
+    color: var(--primary-color);
+    padding-left: 10px;
+}
+.quiz-detail-container img {
+    width: 100%;
+    /*padding: 1% 20%;*/
+    margin: 5px;
+    align-content: center;
+}
+
+.pergunta-container {
+    border: 5px solid var(--secondary-color);
+    border-radius: 30px;
+    padding: 0 3%;
+    margin: 5% 0;
+}
+
+.alternativas-list {
+    border-top: 5px solid var(--secondary-color);
+}
+
+.alternativa-container {
+    padding: 1px 0;
+    background-color: var(--light-color);
+    margin: 2% 0;
+    border: none;
+    border-radius: 50px;
+}
+.alternativa-container p {
+    padding: 0 10px;
+    font-size: 16px;
+}

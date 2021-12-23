@@ -1,18 +1,19 @@
-  
-.main-navbar{
+
+.main-navbar {
     height: 70px;
-    background-color:#661aff;
+    background-color: var(--primary-hover-color);
     padding-left: 45px;
     display: flex;
     align-items: center;
-    }
-    .logo-text{
+}
+
+.logo-text {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 33px;
     letter-spacing: -0.015em;
-    color: #FFFFFF;
+    color: var(--primary-color);
     margin-left: 15px;
-    }
+}

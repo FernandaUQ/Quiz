@@ -1,15 +1,15 @@
-import { Alternativa } from "../../Quizes/types";
+import {Alternativa} from "../../Quizes/types";
 
 type Props = {
-    alternativa: Alternativa;
+  alternativa: Alternativa;
 }
 
-function AlternativaCard ({ alternativa }:Props){
-    return(
-        <div>
-            <h1>{alternativa.descricao}</h1>
-        </div>
-    )
+function AlternativaCard({alternativa}: Props) {
+  return (
+      <div className="alternativa-container">
+        <p>{alternativa.id} - {alternativa.descricao}</p>
+      </div>
+  )
 }
 
 export default AlternativaCard;

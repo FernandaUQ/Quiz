@@ -6,7 +6,7 @@ function Navbar (){
     return(
         <nav className="main-navbar">
             <Icone/>
-            <Link to="/" >Quiz</Link>
+            <Link className="logo-text" to="/" >Quiz</Link>
         </nav>
     )
 }
