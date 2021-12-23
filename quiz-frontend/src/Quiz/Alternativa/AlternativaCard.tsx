@@ -1,4 +1,4 @@
-import { Alternativa } from "../types";
+import { Alternativa } from "../../Quizes/types";
 
 type Props = {
     alternativa: Alternativa;

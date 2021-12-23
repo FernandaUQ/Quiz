@@ -1,24 +1,22 @@
-import { useEffect, useState } from "react";
-import { fetchQuiz } from "../api";
-import QuizList from "./QuizList";
+import {useLocation} from "react-router-dom";
+import {Quiz} from "../Quizes/types";
 
-
-import { Quiz } from "./types";
-
-function QuizView(){
-  
-    const [quizes, setQuiz] = useState<Quiz[]>([]);
-
-    useEffect(() => {
-    fetchQuiz()
-    .then(response => setQuiz(response.data))
-    .catch( error => console.log )
-    }, []);
-
-    return(
-            <QuizList quizes = {quizes}/>
-        
-    )
+function QuizView() {
+  let quiz = useLocation().state as Quiz
+  if (!quiz) return (
+      <h1>This quiz doesn't exist</h1>
+  )
+  console.log(quiz)
+  return (
+      <>
+        <div>
+          <img src={quiz.imgUrl} alt={quiz.titulo}/>
+          <h2>{quiz.titulo}</h2>
+          <div>
+          </div>
+        </div>
+      </>
+  )
 }
 
 export default QuizView;
