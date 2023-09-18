@@ -17,6 +17,7 @@ export type Alternativa = {
     id: number;
     descricao: string;
     pontuacao: number;
+    selected: boolean;
 }
 
 export type Resultado = {

@@ -29,6 +29,25 @@
     margin: 2% 0;
     border: none;
     border-radius: 50px;
+    cursor: pointer;
+}
+.alternativa-container:hover {
+    padding: 1px 0;
+    background-color: var(--secondary-color);
+    color: white;
+    margin: 2% 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.alternativa-container-selected {
+    padding: 1px 0;
+    background-color: var(--secondary-color);
+    color: white;
+    margin: 2% 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
 }
 .alternativa-container p {
     padding: 0 10px;
