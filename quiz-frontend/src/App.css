@@ -6,6 +6,7 @@
     --dark-color: #263238;
     --secondary-color: #440157;
     --light-color: #f3e0ff;
+    --more-light-color: rgba(243, 224, 255, 0.76);
 }
 
 html, body {
