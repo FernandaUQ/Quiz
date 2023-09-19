@@ -1,31 +1,16 @@
 import {Alternativa} from "../../Quizes/types";
-import {checkIsSelected} from "../../Quizes/helpers";
-import {useState} from "react";
 
 type Props = {
-  alternativa: Alternativa;
+    alternativa: Alternativa;
     selectedId: number | null;
-    setSelectedId: (id: number | null) => void;
-}
+    onSelectAlternativa: () => void;
+};
 
-function AlternativaCard({alternativa, selectedId, setSelectedId}: Props ) {
+function AlternativaCard({ alternativa, selectedId, onSelectAlternativa }: Props) {
+    const className = selectedId === alternativa.id ? "alternativa-container-selected" : "alternativa-container";
 
-    const selectAlternativa = () => {
-        return () => {
-            setSelectedId(alternativa.id);
-        };
-    };
-
-    const classname = () => {
-        if (selectedId === alternativa.id) {
-            return "alternativa-container-selected";
-        }
-        return "alternativa-container";
-    };
-
-  return (
-      <div className={classname()}
-           onClick={selectAlternativa()}>
+    return (
+        <div className={className} onClick={onSelectAlternativa}>
           <p>{alternativa.id} - {alternativa.descricao}</p>
       </div>
   )
