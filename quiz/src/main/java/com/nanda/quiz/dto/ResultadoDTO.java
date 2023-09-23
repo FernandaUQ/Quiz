@@ -33,6 +33,7 @@ public class ResultadoDTO implements Serializable{
 	
 	public ResultadoDTO(Resultado en) {
 		super();
+		if (en == null) return;
 		id = en.getId();
 		personagem = en.getPersonagem();
 		imgUrl = en.getImgUrl();

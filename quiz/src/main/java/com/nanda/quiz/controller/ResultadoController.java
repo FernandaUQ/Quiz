@@ -31,15 +31,15 @@ public class ResultadoController {
 		
 		return ResponseEntity.ok().body(list);
 	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<ResultadoDTO> findOne (@PathVariable Integer id){
-		ResultadoDTO resultado = service.findResultado(id);
-		
+
+	@GetMapping("/quiz/{quizId}")
+	public ResponseEntity<List<ResultadoDTO>> findByQuizId (@PathVariable Integer quizId){
+		List<ResultadoDTO> resultado = service.findByQuizId(quizId);
+
 		return ResponseEntity.ok().body(resultado);
 	}
 	
-	@PostMapping
+	@PostMapping("/save/{id}")
 	public ResponseEntity<ResultadoDTO> insert (@RequestBody ResultadoDTO dto){
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -47,19 +47,19 @@ public class ResultadoController {
 		return ResponseEntity.created(uri).body(dto);
 
 	}
-	
-	@PutMapping("/{id}")
+
+	@PutMapping("/update/{id}")
 	public ResponseEntity<ResultadoDTO> insert (@PathVariable Integer id, @RequestBody ResultadoDTO quiz){
 		ResultadoDTO dto = service.update(id, quiz);
 		return ResponseEntity.ok().body(dto);
-		
+
 	}
-	
-	@DeleteMapping("/{id}")
+
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<ResultadoDTO> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
-		
+
 	}
 
 }

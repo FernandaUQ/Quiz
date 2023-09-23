@@ -75,3 +75,59 @@
     margin: 10px;
     cursor: pointer;
 }
+.show-result {
+    display: flex;
+    justify-content: center;
+}
+.button-show-result {
+    border: solid 1px var(--secondary-color);
+    border-radius: 50px;
+    background: var(--more-light-color);
+    font-size: 30px;
+    color: var(--secondary-color);
+    margin: 10px;
+    cursor: pointer;
+    padding: 10px 100px;
+    align-self: center;
+}
+
+
+.button-show-result:disabled {
+    filter: brightness(0.7);
+    cursor: not-allowed;
+}
+
+.card-resultado {
+    width: 70%;
+    border: 3px solid var(--secondary-color);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+}
+.card-resultado-title{
+    border-bottom: 3px solid var(--secondary-color);
+    width: 100%;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-decoration: var(--secondary-color);
+    font-size: 20px;
+}
+
+.card-resultado-title-bottom{
+    border: 3px solid var(--secondary-color);
+    background: var(--more-light-color);
+    border-radius: 50px;
+    width: 100%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-decoration: var(--secondary-color);
+    font-size: 30px;
+}
+
+.img-resultado {
+    width: 80%;
+}

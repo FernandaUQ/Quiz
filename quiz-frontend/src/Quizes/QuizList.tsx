@@ -1,5 +1,8 @@
 import QuizCard from "./QuizCard";
 import {Quiz} from "./types";
+import './styles.css';
+
+
 
 type Props = {
   quizes: Quiz[];
@@ -8,15 +11,13 @@ type Props = {
 function QuizList({quizes}: Props) {
   return (
       <>
-      <div className="orders-list-container">
-        <div className="orders-list-items">
+      <div className="quiz-list-container">
           {quizes.map(quiz => (
                 <QuizCard
                     key={quiz.id}
                     quiz={quiz}
                 />
           ))}
-        </div>
       </div>
       </>
   )

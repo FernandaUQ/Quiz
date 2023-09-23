@@ -23,7 +23,7 @@ export type Alternativa = {
 export type Resultado = {
     id: number;
     personagem: string;
-    imgUrl: number;
+    imgUrl: string;
     notaMin: number;
     notaMax: number;
 }

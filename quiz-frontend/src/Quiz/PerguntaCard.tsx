@@ -1,7 +1,7 @@
 import { Pergunta } from "../Quizes/types";
 import { Alternativa } from "../Quizes/types";
 import AlternativaCard from "./Alternativa/AlternativaCard";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,6 +12,14 @@ type Props = {
 
 function PerguntaCard({ pergunta, onSelectAlternativa }: Props) {
     const [selectedId, setSelectedId] = useState<number | null>(null);
+
+    //Listener
+    useEffect(() => {
+        pergunta.alternativas = pergunta.alternativas.map(e => {
+            e.selected = selectedId === e.id;
+            return e;
+        })
+    }, [selectedId]);
 
     const handleAlternativaClick = (alternativa: Alternativa) => {
         setSelectedId(alternativa.id);
@@ -25,7 +33,7 @@ function PerguntaCard({ pergunta, onSelectAlternativa }: Props) {
 
     return (
         <>
-            <div className="pergunta-container">
+            <div className="pergunta-container" id={"pergunta-container-" + pergunta.id}>
                 <div className="header-pergunta">
                     <h2>{pergunta.id} - {pergunta.corpo}</h2>
                     <button className="button-undo" onClick={() => handleUndoAlternativaSelect()}>

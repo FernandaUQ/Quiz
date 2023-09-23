@@ -11,7 +11,7 @@ function QuizListView(){
     useEffect(() => {
     fetchQuiz()
     .then(response => setQuiz(response.data))
-    .catch( error => console.log )
+    .catch( error => console.error(error) )
     }, []);
 
     return(
