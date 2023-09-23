@@ -1,12 +1,15 @@
 import "./styles.css";
-import { ReactComponent as Icone } from './icon.svg';
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faScroll } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar (){
     return(
         <nav className="main-navbar">
-            <Icone/>
-            <Link className="logo-text" to="/" >Quiz</Link>
+            <Link className="logo-text" to="/">
+                <FontAwesomeIcon icon={faScroll} />
+                <span className="title">Quiz</span>
+            </Link>
         </nav>
     )
 }

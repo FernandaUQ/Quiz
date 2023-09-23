@@ -17,3 +17,6 @@
     color: var(--primary-color);
     margin-left: 15px;
 }
+.title {
+    margin-left: 10px;
+}
